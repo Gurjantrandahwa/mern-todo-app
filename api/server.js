@@ -7,7 +7,8 @@ app.use(cors());
 mongoose.connect("mongodb://localhost:27017/mern", {
     useNewUrlParser: true,
     useUnifiedTopology: true
-},()=>{})
+}, () => {
+})
 
 const Todo = require('./models/Todo');
 app.get('/todos', async (req, res) => {

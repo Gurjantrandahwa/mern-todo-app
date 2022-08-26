@@ -18,7 +18,7 @@ function App() {
             .catch(error => console.error("ERROR", error))
     }
     const completeTodo = async (id) => {
-        const data = await fetch(API_BASE + "/todo/complete/" + id,{method:"PUT"})
+        const data = await fetch(API_BASE + "/todo/complete/" + id, {method: "PUT"})
             .then(res => res.json())
         setTodos(todos => todos.map(todo => {
             if (todo._id === data._id) {
@@ -52,16 +52,17 @@ function App() {
         <h4>Your Tasks</h4>
         <div className={"todos"}>
             {todos.map(todo => {
-                return  <div className={"todo " + (todo.complete ? "is-complete": "")} key={todo._id}>
-                    <div className={"checkbox"}  onClick={()=>{
+                return <div className={"todo " + (todo.complete ? "is-complete" : "")} key={todo._id}>
+                    <div className={"checkbox"} onClick={() => {
                         completeTodo(todo._id)
                     }}/>
-                    <div className={"text"}  onClick={()=>{
+                    <div className={"text"} onClick={() => {
                         completeTodo(todo._id)
                     }}>{todo.text}</div>
-                    <div className={"delete-todo"} onClick={()=>{
+                    <div className={"delete-todo"} onClick={() => {
                         deleteTodo(todo._id)
-                    }}>x</div>
+                    }}>x
+                    </div>
                 </div>
             })}
         </div>
@@ -85,4 +86,5 @@ function App() {
             ) : ''}
     </div>
 }
+
 export default App;
