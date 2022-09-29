@@ -7,10 +7,9 @@ app.use(cors());
 mongoose.connect("mongodb://localhost:27017/mern", {
     useNewUrlParser: true,
     useUnifiedTopology: true
-}, () => {
-})
+}).then(()=>{console.log("connected to DB")}).catch(console.error)
 
-const Todo = require('./models/Todo');
+const Todo = require('./Todo');
 app.get('/todos', async (req, res) => {
     const todos = await Todo.find();
     res.json(todos)
